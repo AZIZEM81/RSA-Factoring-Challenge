@@ -1,0 +1,19 @@
+#!/usr/bin/python3
+from sys import argv
+
+def factorize(num):
+    factors = []
+    divisor = 2
+    while num > 1:
+        while num % divisor == 0:
+            factors.append(divisor)
+            num //= divisor
+        divisor += 1
+    return factors
+
+with open(argv[1]) as f:
+    for line in f:
+        num = int(line)
+        factors = factorize(num)
+        factors_str = '*'.join(map(str, factors))
+        print("{}={}".format(num, factors_str))
